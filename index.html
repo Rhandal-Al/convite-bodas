@@ -7,97 +7,74 @@
 <style>
   body {
     margin: 0;
-    font-family: 'Playfair Display', serif;
-    background-color: #000;
-    color: #d4af37;
+    background: #000;
     overflow: hidden;
   }
-  /* Fundo animado */
-  .stars {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
-    animation: sparkle 3s infinite alternate;
-    z-index: -1;
-  }
-  @keyframes sparkle {
-    from {opacity: 0.6;}
-    to {opacity: 1;}
-  }
-  /* Tela inicial */
-  .cover {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    cursor: pointer;
-  }
-  .cover h1, .cover h2, .cover h3 {
-    margin: 10px;
-    animation: fadeIn 2s ease-in-out;
-  }
-  /* Página principal */
-  .main {
-    display: none;
-    text-align: center;
-    padding: 40px;
-  }
-  .names {
-    font-size: 2.5em;
-    animation: slideIn 3s ease-in-out;
-  }
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  @keyframes slideIn {
-    from {opacity: 0; transform: translateY(-30px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-  .buttons a {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    background-color: #d4af37;
-    color: #000;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
+  canvas {
+    display: block;
   }
 </style>
-<script>
-  function openInvite() {
-    document.querySelector('.cover').style.display = 'none';
-    document.querySelector('.main').style.display = 'block';
-  }
-</script>
 </head>
 <body>
-<div class="stars"></div>
+<canvas id="convite"></canvas>
 
-<!-- Tela inicial -->
-<div class="cover" onclick="openInvite()">
-  <h1>Convite Especial</h1>
-  <h2>Bodas de Ouro</h2>
-  <h3>Geraldo & Isabel</h3>
-  <p>(Clique para abrir)</p>
-</div>
+<script>
+const canvas = document.getElementById("convite");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-<!-- Página principal -->
-<div class="main">
-  <div class="names">Geraldo & Isabel</div>
-  <p>Celebrando 50 anos de união</p>
-  <p>📅 17 de Janeiro às 11h00</p>
-  <p>📍 Clube Aquáticos do Bosque<br>
-     <a href="https://www.google.com/maps?q=Avenida+Bosque+da+Saúde,+654" target="_blank">Abrir no Maps</a></p>
-  <div class="buttons">
-    <a href="#">Confirme sua Presença</a>
-  </div>
-  <h3>Esperamos por você!</h3>
-  <h2>50 ANOS</h2>
-</div>
+// Fundo com estrelas cintilando
+function drawStars() {
+  for (let i = 0; i < 100; i++) {
+    ctx.fillStyle = "rgba(212,175,55," + Math.random() + ")";
+    ctx.beginPath();
+    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+// Texto animado
+function drawText() {
+  ctx.fillStyle = "#d4af37";
+  ctx.font = "bold 32px Playfair Display, serif";
+  ctx.textAlign = "center";
+  ctx.fillText("Convite Especial", canvas.width/2, 100);
+  ctx.fillText("Bodas de Ouro", canvas.width/2, 150);
+  ctx.fillText("Geraldo & Isabel", canvas.width/2, 200);
+  ctx.font = "20px Arial";
+  ctx.fillText("📅 17 de Janeiro às 11h00", canvas.width/2, 260);
+  ctx.fillText("📍 Clube Aquáticos do Bosque", canvas.width/2, 300);
+}
+
+// Botão de links
+function drawButton(text, y, url) {
+  ctx.fillStyle = "#d4af37";
+  ctx.fillRect(canvas.width/2 - 100, y - 30, 200, 50);
+  ctx.fillStyle = "#000";
+  ctx.font = "bold 18px Arial";
+  ctx.fillText(text, canvas.width/2, y);
+  
+  // Detecta clique
+  canvas.addEventListener("click", function(e) {
+    const x = e.offsetX;
+    const clickY = e.offsetY;
+    if (x > canvas.width/2 - 100 && x < canvas.width/2 + 100 && clickY > y - 30 && clickY < y + 20) {
+      window.open(url, "_blank");
+    }
+  });
+}
+
+// Loop de animação
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawStars();
+  drawText();
+  drawButton("Abrir no Maps", 360, "https://www.google.com/maps?q=Avenida+Bosque+da+Saúde,+654");
+  drawButton("Confirme sua Presença", 430, "https://forms.gle/seulinkdeconfirmacao");
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 </body>
 </html>
