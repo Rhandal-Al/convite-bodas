@@ -1,39 +1,172 @@
-
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bodas de Ouro - Geraldo & Isabel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { 
+            width: 100%; 
+            height: 100%; 
+            background-color: #000000 !important; 
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
 
-    <meta charset="UTF-8">
+        /* Fundo de Partículas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-    <title>Bodas de Ouro - Geraldo & Isabel</title>
+        /* Foto em Arco */
+        .photo-container {
+            position: relative;
+            width: 220px;
+            height: 300px;
+            margin-bottom: 20px;
+            border: 2px solid #d4af37;
+            border-radius: 110px 110px 10px 10px;
+            padding: 5px;
+            background: #000;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
 
-    <script src="https://cdn.tailwindcss.com"></script>
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 105px 105px 5px 5px;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+        /* Texto Dourado */
+        .gold-text {
+            background: linear-gradient(to bottom, #d4af37, #f7ef8a, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
 
-    <style>
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
 
-        body, html {
+        .map-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            border: 1px solid #d4af37;
+            border-radius: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-            margin: 0;
+        /* Animações simples para não falhar no mobile */
+        .fade-in {
+            animation: fadeIn 2s ease-in forwards;
+        }
 
-            padding: 0;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
 
-            width: 100%;
+    <canvas id="bg-canvas"></canvas>
 
-            height: 100%;
+    <div class="main-wrapper fade-in">
+        <p style="letter-spacing: 5px; font-size: 0.6rem; color: #d4af37;">1974 — 2024</p>
+        <h1 class="gold-text" style="font-family: 'Cinzel', serif; font-size: 1.6rem; letter-spacing: 3px; margin-bottom: 15px;">BODAS DE OURO</h1>
 
-            background-color: #000;
+        <div class="photo-container">
+            <img src="196702.png" alt="Geraldo e Isabel">
+        </div>
 
-            overflow: hidden;
+        <p style="font-size: 0.7rem; color: #aaa;">Com a bênção de Deus</p>
+        <div class="names gold-text">Geraldo & Isabel</div>
+        
+        <div style="width: 40px; height: 1px; background: #d4af37; margin: 10px auto;"></div>
 
-            font-family: 'Montserrat', sans-serif;
+        <div style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #d4af37;">30 NOVEMBRO</div>
+        <p style="font-size: 0.8rem; margin: 5px 0;">Sábado às 19:30h</p>
 
-            color: #fff;
+        <div style="margin-top: 15px; font-size: 0.8rem;">
+            <p style="font-weight: bold;">Igreja Santo Antônio — Saudade</p>
+            <p style="color: #888; margin-top: 5px;">Recepção: Clube Aquático do Bosque</p>
+            
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua+Traituba+287+Vila+da+Saude" target="_blank" class="map-button">
+                📍 Ver Local no Mapa
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            dots = [];
+            for(let i=0; i<60; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(212, 175, 55, 0.3)";
+            dots.forEach(d => {
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.size, 0, Math.PI*2);
+                ctx.fill();
+                d.y -= d.speed;
+                if(d.y < 0) d.y = canvas.height;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+    </script>
+</body>
+</html>
 
         }
 
