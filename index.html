@@ -32,23 +32,18 @@
       background: rgba(0,0,0,0.6);
     }
     .foto-container {
-    display: flex;              /* usa flexbox para centralizar */
-    justify-content: center;    /* centraliza horizontalmente */
-    align-items: center;        /* centraliza verticalmente */
-    margin: 20px auto;          /* espaço em cima e embaixo */
-    width: 280px;               /* largura fixa para a moldura */
-    height: auto;
-    padding: 10px;              /* espaço interno entre foto e moldura */
-    border: 20px solid transparent;
-    border-image: url('moldura-dourada-refinada.png') 60 round;
-    box-sizing: border-box;     /* garante que borda não quebre o tamanho */
+        display: inline-block;
+        padding: 10px; /* espaço interno entre a foto e a moldura */
+        border: 20px solid transparent;
+        border-image: url('moldura-dourada-refinada.png') 60 round;
     }
 
-    .foto-casal {
-    max-width: 100%;   /* ocupa toda a largura do container */
-    height: auto;
-    display: block;
+        .foto-casal {
+        width: 250px;   /* ajuste conforme necessário */
+        height: auto;
+        display: block;
     }
+
 
 
     h1 {
