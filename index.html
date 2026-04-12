@@ -124,28 +124,30 @@
       color: #000;
     }
 
-    .info .data,
-    .info .local a {
-        font-size: 1.2rem;
-        text-transform: lowercase; /* só afeta letras */
-        background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: #FFD700; /* fallback */
-        text-shadow: 0 0 5px rgba(255,215,0,0.6),
-                    0 0 10px rgba(255,215,0,0.4),
-                    0 0 20px rgba(255,215,0,0.2);
-    }
+.info .data span:not(.icon),
+.info .local a {
+  font-size: 1.2rem;
+  text-transform: lowercase; /* só afeta letras */
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback */
+  text-shadow: 0 0 5px rgba(255,215,0,0.6),
+               0 0 10px rgba(255,215,0,0.4),
+               0 0 20px rgba(255,215,0,0.2);
+}
 
-    .icon {
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 6px;
-    }
-    svg {
-        height: 1em;
-        width: 1em;
-    }
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  font-size: 1em; /* mantém proporcional */
+}
+svg {
+  height: 1em;
+  width: 1em;
+}
+
 
     @media (max-width: 480px) {
       h1 { font-size: 2.5rem; }
@@ -187,7 +189,9 @@
         16H5V9h14v11z"/>
       </svg>
     </span>
+    <span>
     4 de julho de 2026 às 18:00h
+    </span>
   </div>
   <div class="local">
     <a href="https://www.google.com/maps/search/?api=1&query=Clube+Aquatico+do+Bosque+Rua+Traituba+287+Vila+da+Saude" target="_blank">
