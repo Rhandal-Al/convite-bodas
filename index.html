@@ -27,7 +27,7 @@
       position: relative;
       z-index: 10;
       background: rgba(0,0,0,0.6);
-      padding: 20px;
+      padding: 0px;
       border: 30px solid transparent; /* largura da moldura */
       border-image: url('moldura-convite.png') 60 round;
       border-image-slice: 60; /* necessário para funcionar */
@@ -47,22 +47,23 @@
     }
 
     .foto-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 10px auto;
-        width: 280px;
-        height: auto;
-        padding: 10px;
-        border: 17px solid transparent;
-        border-image: url('moldura-foto.png') 60 round;
-        box-sizing: border-box;     /* garante que borda não quebre o tamanho */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1px auto;
+      width: 253px;
+      height: auto;
+      padding: 0px;
+      border: 17px solid transparent;
+      border-image: url(moldura-foto.png) 60 round;
+      box-sizing: border-box;
     }
 
     .foto-casal {
-        max-width: 100%;            /* ocupa toda a largura do container */
-        height: auto;
-        display: block;
+      max-width: 112%;
+      padding-left: 7px;
+      height: 21rem;
+      display: block;
     }
 
     h1 {
@@ -194,7 +195,7 @@ svg {
 
 
     @media (max-width: 480px) {
-      h1 { font-size: 2.8rem; }
+      h1 { font-size: 2.1rem; }
       h2 { font-size: 0.8rem; }
       .info { font-size: 1rem; }
     }
