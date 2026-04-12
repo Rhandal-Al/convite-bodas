@@ -123,20 +123,20 @@
       background: #FFD700;
       color: #000;
     }
-    .info .data {
-        margin-bottom: 10px;
+    .info .data, .info .local a {
         font-size: 1.2rem;
-        color: #FFD700;
+        text-transform: lowercase; /* caixa baixa */
+        background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #FFD700; /* fallback */
+        text-shadow: 0 0 5px rgba(255,215,0,0.6),
+                    0 0 10px rgba(255,215,0,0.4),
+                    0 0 20px rgba(255,215,0,0.2);
     }
 
-    .info .local a {
-        font-size: 1.2rem;
-        color: #FFD700;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .info .local a:hover {
-        text-decoration: underline;
+    .icon {
+        margin-right: 5px;
     }
 
     @media (max-width: 480px) {
@@ -160,13 +160,13 @@
 <!-- texto adicionado -->
     <h2>Celebrando 50 anos de união</h2>
 
-    <div class="info">
+<div class="info">
   <div class="data">
-    📅 4 de Julho de 2026 às 18:00h
+    <span class="icon">📅</span> 4 de julho de 2026 às 18:00h
   </div>
   <div class="local">
     <a href="https://www.google.com/maps/search/?api=1&query=Clube+Aquatico+do+Bosque+Rua+Traituba+287+Vila+da+Saude" target="_blank">
-      📍 Recepção: Clube Aquático do Bosque
+      <span class="icon">📍</span> recepção: clube aquático do bosque
     </a>
   </div>
 </div>
