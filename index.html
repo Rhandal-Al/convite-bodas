@@ -31,6 +31,18 @@
         border: 20px solid transparent;
         border-image: url('moldura-convite.png') 60 round;
     }
+    h2.bodas {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fdf5e6, #daa520, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback */
+  text-shadow: 0 0 5px rgba(255,215,0,0.6),
+               0 0 10px rgba(255,215,0,0.4),
+               0 0 20px rgba(255,215,0,0.2);
+}
+
 
     .foto-container {
         display: flex;              /* usa flexbox para centralizar */
@@ -109,12 +121,13 @@
   <canvas id="bg-canvas"></canvas>
 
   <div class="container">
+        <h2 class="bodas">Bodas de Ouro</h2>
      <div class="foto-container">
       <img src="foto-casal1.2.png" alt="Foto do casal" class="foto-casal">
     </div>
 
     <h1>Geraldo & Isabel</h1>
-    <h2>Bodas de Ouro</h2> <!-- texto adicionado -->
+<!-- texto adicionado -->
     <h2>Celebrando 50 anos de união</h2>
 
     <div class="info">
