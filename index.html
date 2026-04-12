@@ -16,16 +16,17 @@
   .container {
     border: 20px solid transparent;
     border-image: url('moldura-dourada.png') 60 round;
-    padding: 30px;
-    max-width: 95%;
-    margin: auto;
-    text-align: center;
+    pmax-width: 95%;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+
   }
 
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin: 10px 0;
       background: linear-gradient(to bottom, #d4af37, #f7ef8a, #d4af37);
       -webkit-background-clip: text;
@@ -38,10 +39,19 @@
       margin-bottom: 20px;
     }
 
-    .info {
-      font-size: 1.2rem;
-      margin: 15px 0;
-    }
+    .info a {
+  border: 2px solid #FFD700;
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: #FFD700;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.info a:hover {
+  background: #FFD700;
+  color: #000;
+}
+
 
     a.confirm {
       display: inline-block;
@@ -60,8 +70,17 @@
       color: #000;
     }
 
+    .gold-glow {
+  background: linear-gradient(to bottom, #cfaf3c 0%, #f7ef8a 50%, #cfaf3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback para navegadores sem suporte */
+  font-weight: bold;
+}
+
+
     @media (max-width: 480px) {
-      h1 { font-size: 2.2rem; }
+      h1 { font-size: 1.8rem; }
       h2 { font-size: 1.2rem; }
       .info { font-size: 1rem; }
     }
@@ -87,5 +106,54 @@
       <strong>50 ANOS</strong>
     </div>
   </div>
+  <script>
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class GoldDust {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.5;
+        this.speedY = Math.random() * -0.5 - 0.2;
+        this.opacity = Math.random();
+      }
+      draw() {
+        ctx.fillStyle = `rgba(212,175,55,${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+      update() {
+        this.y += this.speedY;
+        if(this.y < -10) this.y = canvas.height + 10;
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for(let i=0; i<80; i++) particles.push(new GoldDust());
+    }
+
+    function loop() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(loop);
+    }
+
+    window.onload = () => {
+      resize();
+      initParticles();
+      loop();
+    };
+    window.onresize = resize;
+  </script>
+
 </body>
 </html>
