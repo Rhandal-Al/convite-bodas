@@ -33,15 +33,20 @@
     }
 
     .foto-container {
-        display: inline-block;
-        margin-bottom: 20px;
+        display: flex;              /* usa flexbox para centralizar */
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;          /* centraliza no convite */
+        width: 280px;               /* largura fixa para a moldura */
+        height: auto;
+        padding: 10px;              /* espaço entre a foto e a moldura */
         border: 15px solid transparent;
         border-image: url('moldura-foto.png') 60 round;
-        padding: 5px; /* espaço entre a foto e a moldura */
+        box-sizing: border-box;     /* garante que borda não quebre o tamanho */
     }
 
     .foto-casal {
-        width: 250px;   /* ajuste conforme necessário */
+        max-width: 100%;            /* ocupa toda a largura do container */
         height: auto;
         display: block;
     }
