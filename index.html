@@ -20,7 +20,10 @@
       text-align: center;
       font-size: 2em;
       opacity: 0;
-      animation-fill-mode: forwards;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
     }
 
     /* Animações */
@@ -39,23 +42,18 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    @keyframes typewriter {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
     /* Sequência das cenas */
     .scene1 { animation: fadeIn 2s ease forwards; animation-delay: 0s; }
     .scene2 { animation: slideIn 2s ease forwards; animation-delay: 3s; }
-    .scene3 { animation: fadeIn 3s ease forwards; animation-delay: 6s; }
-    .scene4 { animation: fadeIn 3s ease forwards; animation-delay: 10s; }
-    .scene5 { animation: zoomIn 2s ease forwards; animation-delay: 14s; }
-    .scene6 { animation: fadeIn 2s ease forwards; animation-delay: 18s; }
-    .scene7 { animation: zoomIn 3s ease forwards; animation-delay: 22s; }
+    .scene3 { animation: fadeIn 2s ease forwards; animation-delay: 6s; }
+    .scene4 { animation: fadeIn 2s ease forwards; animation-delay: 9s; }
+    .scene5 { animation: zoomIn 2s ease forwards; animation-delay: 12s; }
+    .scene6 { animation: fadeIn 2s ease forwards; animation-delay: 15s; }
+    .scene7 { animation: zoomIn 2s ease forwards; animation-delay: 18s; }
 
-    /* Estilo especial para a cena da foto */
+    /* Cena da foto */
     .scene3 {
-      background: url('foto-casal1.2.png') center/cover no-repeat;
+      background: url('foto-casal.jpg') center/cover no-repeat;
       color: #fff;
       text-shadow: 2px 2px 4px #000;
     }
