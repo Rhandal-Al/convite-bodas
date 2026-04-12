@@ -31,13 +31,19 @@
       z-index: 10;
       background: rgba(0,0,0,0.6);
     }
-    .foto-casal {
-  width: 250px;         /* ajuste conforme necessário */
-  border: 8px solid transparent;
-  border-image: url('moldura-dourada.png') 40 round; /* mesma moldura */
-  border-radius: 10px;  /* opcional, deixa cantos arredondados */
-  margin-bottom: 20px;
-}
+    .foto-container {
+        display: inline-block;
+        padding: 10px; /* espaço interno entre a foto e a moldura */
+        border: 20px solid transparent;
+        border-image: url('moldura-dourada-refinada.png') 60 round;
+    }
+
+        .foto-casal {
+        width: 250px;   /* ajuste conforme necessário */
+        height: auto;
+        display: block;
+    }
+
 
 
     h1 {
@@ -97,7 +103,7 @@
   <!-- Canvas para fundo animado -->
   <canvas id="bg-canvas"></canvas>
 
-  <div class="container">
+  <div class="foto-container">
      <img src="foto-casal1.2.png"  alt="Foto do casal" class="foto-casal">
 
     <h1>Geraldo & Isabel</h1>
