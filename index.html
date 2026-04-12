@@ -21,15 +21,16 @@
     }
 
     .container {
-        max-width: 95%;
-        margin: auto;
-        text-align: center;
-        position: relative;
-        z-index: 10;
-        background: rgba(0,0,0,0.6);
-        padding: 10px;
-        border: 20px solid transparent;
-        border-image: url('moldura-convite.png') 60 round;
+      max-width: 95%;
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border: 30px solid transparent; /* largura da moldura */
+      border-image: url('moldura-convite.png') 60 round;
+      border-image-slice: 60; /* necessário para funcionar */
     }
     h2.bodas {
         margin-top: unset;
