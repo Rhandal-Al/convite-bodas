@@ -1,81 +1,625 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Convite Bodas de Ouro</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: #000;
-      color: #FFD700;
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bodas de Ouro - Geraldo & Isabel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { 
+            width: 100%; 
+            height: 100%; 
+            background-color: #000000 !important; 
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
 
-    .scene {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      font-size: 2em;
-      opacity: 0;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-    }
+        /* Fundo de Partículas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-    /* Animações */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-    @keyframes slideIn {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
+        /* Foto em Arco */
+        .photo-container {
+            position: relative;
+            width: 220px;
+            height: 300px;
+            margin-bottom: 20px;
+            border: 2px solid #d4af37;
+            border-radius: 110px 110px 10px 10px;
+            padding: 5px;
+            background: #000;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
 
-    @keyframes zoomIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 105px 105px 5px 5px;
+        }
 
-    /* Sequência das cenas */
-    .scene1 { animation: fadeIn 2s ease forwards; animation-delay: 0s; }
-    .scene2 { animation: slideIn 2s ease forwards; animation-delay: 3s; }
-    .scene3 { animation: fadeIn 2s ease forwards; animation-delay: 6s; }
-    .scene4 { animation: fadeIn 2s ease forwards; animation-delay: 9s; }
-    .scene5 { animation: zoomIn 2s ease forwards; animation-delay: 12s; }
-    .scene6 { animation: fadeIn 2s ease forwards; animation-delay: 15s; }
-    .scene7 { animation: zoomIn 2s ease forwards; animation-delay: 18s; }
+        /* Texto Dourado */
+        .gold-text {
+            background: linear-gradient(to bottom, #d4af37, #f7ef8a, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
 
-    /* Cena da foto */
-    .scene3 {
-      background: url('foto-casal.jpg') center/cover no-repeat;
-      color: #fff;
-      text-shadow: 2px 2px 4px #000;
-    }
-  </style>
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+
+        .map-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            border: 1px solid #d4af37;
+            border-radius: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Animações simples para não falhar no mobile */
+        .fade-in {
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="scene scene1">50 anos de amor e união</div>
-  <div class="scene scene2">Rhandal & [Nome da parceira]</div>
-  <div class="scene scene3">Uma história construída com amor...</div>
-  <div class="scene scene4">Com imensa alegria, convidamos você para celebrar nossas Bodas de Ouro</div>
-  <div class="scene scene5">
-    📅 Data: 20 de Julho de 2026 <br>
-    🕗 Horário: 19h <br>
-    📍 Local: Espaço Harmonia, Cotia - SP
-  </div>
-  <div class="scene scene6">
-    🎁 Lista de presentes <br>
-    📍 Como chegar <br>
-    ✅ Confirme sua presença
-  </div>
-  <div class="scene scene7">Esperamos você para celebrar este momento inesquecível!</div>
+    <canvas id="bg-canvas"></canvas>
 
+    <div class="main-wrapper fade-in">
+        <p style="letter-spacing: 5px; font-size: 0.6rem; color: #d4af37;">1974 — 2024</p>
+        <h1 class="gold-text" style="font-family: 'Cinzel', serif; font-size: 1.6rem; letter-spacing: 3px; margin-bottom: 15px;">BODAS DE OURO</h1>
+
+        <div class="photo-container">
+            <img src="foto-casal1.2.png" alt="Geraldo e Isabel">
+        </div>
+
+        <p style="font-size: 0.7rem; color: #aaa;">Com a bênção de Deus</p>
+        <div class="names gold-text">Geraldo & Isabel</div>
+        
+        <div style="width: 40px; height: 1px; background: #d4af37; margin: 10px auto;"></div>
+
+        <div style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #d4af37;">30 NOVEMBRO</div>
+        <p style="font-size: 0.8rem; margin: 5px 0;">Sábado às 19:30h</p>
+
+        <div style="margin-top: 15px; font-size: 0.8rem;">
+            <p style="font-weight: bold;">Igreja Santo Antônio — Saudade</p>
+            <p style="color: #888; margin-top: 5px;">Recepção: Clube Aquático do Bosque</p>
+            
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua+Traituba+287+Vila+da+Saude" target="_blank" class="map-button">
+                📍 Ver Local no Mapa
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            dots = [];
+            for(let i=0; i<60; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(212, 175, 55, 0.3)";
+            dots.forEach(d => {
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.size, 0, Math.PI*2);
+                ctx.fill();
+                d.y -= d.speed;
+                if(d.y < 0) d.y = canvas.height;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+    </script>
 </body>
 </html>
+
+        }
+
+
+        #bg-canvas {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: 1;
+
+        }
+
+
+        .content-container {
+
+            position: relative;
+
+            z-index: 10;
+
+            width: 100%;
+
+            max-width: 450px;
+
+            height: 100vh;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            text-align: center;
+
+            background: radial-gradient(circle at center, rgba(30,30,30,0.4) 0%, transparent 70%);
+
+        }
+
+
+        /* Moldura da Foto */
+
+        .photo-box {
+
+            position: relative;
+
+            width: 240px;
+
+            height: 320px;
+
+            margin: 20px 0;
+
+            opacity: 0;
+
+            transform: scale(0.8);
+
+            animation: reveal 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+
+            animation-delay: 0.5s;
+
+        }
+
+
+        .photo-border {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 120px 120px 10px 10px;
+
+            border: 2px solid #d4af37;
+
+            padding: 6px;
+
+            background: linear-gradient(135deg, #222, #000);
+
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+
+        }
+
+
+        .photo-inner {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 114px 114px 5px 5px;
+
+            overflow: hidden;
+
+        }
+
+
+        .photo-inner img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: brightness(1.1) contrast(1.05);
+
+        }
+
+
+        /* Efeito de Ouro no Texto */
+
+        .gold-glow {
+
+            background: linear-gradient(to bottom, #cfaf3c 0%, #f7ef8a 50%, #cfaf3c 100%);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            font-weight: bold;
+
+        }
+
+
+        /* Nomes Animados */
+
+        .names-display {
+
+            font-family: 'Great Vibes', cursive;
+
+            font-size: 3.5rem;
+
+            min-height: 4.5rem;
+
+            margin: 10px 0;
+
+        }
+
+
+        .letter {
+
+            display: inline-block;
+
+            opacity: 0;
+
+            transform: translateY(15px);
+
+            animation: letterIn 0.5s ease forwards;
+
+        }
+
+
+        @keyframes letterIn {
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+
+        /* Info do Evento */
+
+        .info-card {
+
+            opacity: 0;
+
+            animation: fadeIn 1s ease forwards;
+
+            animation-delay: 2.5s;
+
+        }
+
+
+        .map-btn {
+
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 8px 20px;
+
+            border: 1px solid #d4af37;
+
+            border-radius: 20px;
+
+            color: #d4af37;
+
+            text-decoration: none;
+
+            font-size: 0.75rem;
+
+            letter-spacing: 1px;
+
+            transition: all 0.3s;
+
+        }
+
+
+        .map-btn:active {
+
+            background: #d4af37;
+
+            color: #000;
+
+        }
+
+
+        @keyframes reveal {
+
+            to { opacity: 1; transform: scale(1); }
+
+        }
+
+
+        @keyframes fadeIn {
+
+            to { opacity: 1; }
+
+        }
+
+
+        .divider {
+
+            width: 50px;
+
+            height: 1px;
+
+            background: #d4af37;
+
+            margin: 15px auto;
+
+            opacity: 0.5;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <canvas id="bg-canvas"></canvas>
+
+
+    <div class="content-container">
+
+        <!-- Topo -->
+
+        <div class="info-card" style="animation-delay: 0.2s;">
+
+            <p style="letter-spacing: 4px; font-size: 0.6rem; text-transform: uppercase;">1974 — 2024</p>
+
+            <h1 class="gold-glow" style="font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 5px;">BODAS DE OURO</h1>
+
+        </div>
+
+
+        <!-- Foto -->
+
+        <div class="photo-box">
+
+            <div class="photo-border">
+
+                <div class="photo-inner">
+
+                    <img src="foto-casal.jpeg.png" alt="Geraldo e Isabel 1967">
+
+                </div>
+
+            </div>
+
+            <div style="position: absolute; top: -10px; right: -10px; color: #d4af37;">✦</div>
+
+        </div>
+
+
+        <!-- Nomes -->
+
+        <div class="names-display gold-glow" id="names-box"></div>
+
+
+        <div class="divider"></div>
+
+
+        <!-- Local e Hora -->
+
+        <div class="info-card">
+
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #d4af37; letter-spacing: 3px;">30 NOVEMBRO</div>
+
+            <p style="font-size: 0.8rem; margin-top: 5px;">Sábado às 19:30h</p>
+
+            
+
+            <div style="margin-top: 20px; font-size: 0.85rem; line-height: 1.6;">
+
+                <p style="font-weight: bold;">Igreja Santo Antônio — Saudade</p>
+
+                <p style="color: #ccc;">Recepção:</p>
+
+                <p class="text-white">Clube Aquático do Bosque</p>
+
+                
+
+                <a href="https://www.google.com/maps/search/?api=1&query=Rua+Traituba+287+Vila+da+Saude" target="_blank" class="map-btn">
+
+                    VER LOCAL NO MAPA
+
+                </a>
+
+                
+
+                <p style="font-size: 0.6rem; color: #666; margin-top: 10px;">Rua Traituba, 287 — Vila da Saúde</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const canvas = document.getElementById('bg-canvas');
+
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+
+
+        function resize() {
+
+            canvas.width = window.innerWidth;
+
+            canvas.height = window.innerHeight;
+
+        }
+
+
+        class GoldDust {
+
+            constructor() {
+
+                this.x = Math.random() * canvas.width;
+
+                this.y = Math.random() * canvas.height;
+
+                this.size = Math.random() * 1.5;
+
+                this.speedY = Math.random() * -0.5 - 0.2;
+
+                this.opacity = Math.random();
+
+            }
+
+            draw() {
+
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+
+                ctx.beginPath();
+
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+                ctx.fill();
+
+            }
+
+            update() {
+
+                this.y += this.speedY;
+
+                if (this.y < -10) this.y = canvas.height + 10;
+
+            }
+
+        }
+
+
+        function initParticles() {
+
+            particles = [];
+
+            for(let i=0; i<80; i++) particles.push(new GoldDust());
+
+        }
+
+
+        function loop() {
+
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+
+            particles.forEach(p => { p.update(); p.draw(); });
+
+            requestAnimationFrame(loop);
+
+        }
+
+
+        function animateNames() {
+
+            const box = document.getElementById('names-box');
+
+            const text = "Geraldo & Isabel";
+
+            setTimeout(() => {
+
+                text.split('').forEach((l, i) => {
+
+                    const s = document.createElement('span');
+
+                    s.textContent = l === ' ' ? '\u00A0' : l;
+
+                    s.className = 'letter';
+
+                    s.style.animationDelay = `${i * 0.1}s`;
+
+                    box.appendChild(s);
+
+                });
+
+            }, 1200);
+
+        }
+
+
+        window.onload = () => {
+
+            resize();
+
+            initParticles();
+
+            loop();
+
+            animateNames();
+
+        };
+
+        window.onresize = resize;
+
+    </script>
+
+</body>
+
+</html>
+
