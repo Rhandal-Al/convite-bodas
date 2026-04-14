@@ -284,56 +284,57 @@ svg {
 <script>
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
-  let stars = [];
+  let particles = [];
 
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
 
-class Star {
-  constructor() {
-    // limitar X e Y para a área central
-    this.x = canvas.width * 0.25 + Math.random() * (canvas.width * 0.5);
-    this.y = canvas.height * 0.2 + Math.random() * (canvas.height * 0.6);
-
-    this.size = Math.random() * 2 + 1;
-    this.opacity = Math.random();
-    this.pulse = Math.random() * 0.03 + 0.01;
-  }
-  draw() {
-    ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  update() {
-    this.opacity += this.pulse;
-    if (this.opacity >= 1 || this.opacity <= 0.3) {
-      this.pulse *= -1;
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+      this.speedY = Math.random() * -0.5 - 0.2;
+      this.opacity = Math.random();
+      this.pulse = Math.random() * 0.05 + 0.02;
+    }
+    draw() {
+      ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`; // dourado simples
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    update() {
+      this.y += this.speedY;
+      this.opacity += this.pulse;
+      if (this.opacity >= 1 || this.opacity <= 0.3) {
+        this.pulse *= -1;
+      }
+      if (this.y < -10) this.y = canvas.height + 10;
     }
   }
-}
 
-
-  function initStars() {
-    stars = [];
-    for (let i = 0; i < 120; i++) stars.push(new Star()); // quantidade de estrelas
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < 80; i++) particles.push(new Particle()); // menos partículas
   }
 
   function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    stars.forEach(s => { s.update(); s.draw(); });
+    particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(loop);
   }
 
   window.onload = () => {
     resize();
-    initStars();
+    initParticles();
     loop();
   };
   window.onresize = resize;
 </script>
+
 
 
 </body>
