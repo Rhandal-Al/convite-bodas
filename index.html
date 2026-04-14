@@ -32,8 +32,8 @@
       border-image: url(moldura-convite.png) 60 round;
       border-image-slice: 60; /* necessário para funcionar */
     }
-    h2.bodas {
-  font-family: 'Great Vibes', cursive; /* fonte cursiva elegante */
+h2.bodas {
+  font-family: 'Great Vibes', cursive;
   font-size: 3rem;
   font-weight: bold;
   background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
@@ -45,6 +45,17 @@
     0 0 10px rgba(255,215,0,0.4),
     0 0 20px rgba(255,215,0,0.2);
   margin: 20px 0;
+  position: relative;
+  display: inline-block;
+}
+
+h2.bodas .flourish {
+  display: block;
+  width: 100%;
+  height: 20px;
+  margin-top: 10px;
+  background: url('flourish-dourado.svg') no-repeat center;
+  background-size: contain;
 }
 
     .foto-container {
@@ -214,7 +225,10 @@ svg {
   <canvas id="bg-canvas"></canvas>
 
   <div class="container">
-        <h2 class="bodas">Bodas de Ouro</h2>
+        <h2 class="bodas">
+  Bodas de Ouro
+  <span class="flourish"></span>
+</h2>
      <div class="foto-container">
       <img src="foto-casal1.2.png" alt="Foto do casal" class="foto-casal">
     </div>
