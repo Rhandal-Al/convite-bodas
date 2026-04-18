@@ -291,17 +291,16 @@ svg {
       }
     }
 
-   @media (max-width: 600px) {
-  h1, h2, .texto-dourado {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: initial !important;
-    color: #FFD700 !important;
-    text-shadow: 0 0 5px rgba(255,215,0,0.6);
-  }
+    /* Fallback para mobile */
+    @media (max-width: 600px) {
+      .texto-dourado {
+        background: none;
+        color: #FFD700;
+        text-shadow: 0 0 5px rgba(255,215,0,0.6);
+      }
+    }
 }
-}
-</style>
+  </style>
 </head>
 <body>
   <!-- Canvas para fundo animado -->
