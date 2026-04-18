@@ -8,99 +8,114 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: 'Cinzel Decorative', serif;
-}
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Cinzel Decorative', serif;
+    }
 
-#bg-canvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 1;
-}
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+    }
 
-.container {
-  max-width: 95%;
-  margin: auto;
-  text-align: center;
-  position: relative;
-  z-index: 10;
-  background: rgba(0,0,0,0.6);
-  padding: 0px;
-  border: 17px solid transparent;
-  border-image: url(moldura-convite.png) 60 round;
-  border-image-slice: 60;
-}
-
-/* Classe única para textos dourados */
-.texto-dourado {
-  background: linear-gradient(45deg, #b8860b, #ffd700, #daa520);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #FFD700; /* fallback */
-  text-shadow: 0 0 1px rgba(0,0,0,0.4);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Fallback para mobile */
-@media (max-width: 600px) {
-  h1, h2, .texto-dourado {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: initial !important;
-    color: #FFD700 !important;
-    text-shadow: 0 0 5px rgba(255,215,0,0.6);
-  }
-}
-
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3.1rem;
-  margin: 10px 0 -16px 0;
-}
-
-h1.nomes {
-  font-size: 2.6rem;
-  margin: 10px 0;
-}
-
+    .container {
+      max-width: 95%;
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: rgba(0,0,0,0.6);
+      padding: 0px;
+      border: 17px solid transparent; /* largura da moldura */
+      border-image: url(moldura-convite.png) 60 round;
+      border-image-slice: 60; /* necessário para funcionar */
+    }
 h2.bodas {
   font-family: 'Great Vibes', cursive;
   font-size: 3rem;
   font-weight: bold;
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade com WebKit */
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback */
+  text-shadow: 
+    0 0 5px rgba(255,215,0,0.6),
+    0 0 10px rgba(255,215,0,0.4),
+    0 0 20px rgba(255,215,0,0.2);
   margin: 0px 0;
   text-align: center;
 }
 
-h2 {
-  font-size: 0.8rem;
-  color: #FFD700;
-  margin-bottom: -8px;
+    .foto-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1px auto;
+      width: 253px;
+      height: auto;
+      padding: 0px;
+      border: 17px solid transparent;
+      border-image: url(moldura-principal.png) 60 round;
+      box-sizing: border-box;
+    }
+
+    .foto-casal {
+      max-width: 112%;
+      padding-left: 7px;
+      height: 12rem;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.1rem;
+      margin: 10px 0 -16px 0;
+      background: linear-gradient(to bottom, #d4af37, #f7ef8a, #d4af37);
+      background-clip: text;           /* padrão */
+      -webkit-background-clip: text;   /* compatibilidade com WebKit */
+      -webkit-text-fill-color: transparent;
+      color: #FFD700; /* fallback */
+    }
+
+
+    h1.nomes {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.6rem;
+      margin: 10px 0;
+      background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+      background-clip: text;           /* padrão */
+      -webkit-background-clip: text;   /* compatibilidade com WebKit */
+      -webkit-text-fill-color: transparent;
+      color: #FFD700; /* fallback */
+      text-shadow: 0 0 5px rgba(255,215,0,0.6),
+                  0 0 10px rgba(255,215,0,0.4),
+                  0 0 20px rgba(255,215,0,0.2);
+    }
+
+
+
+    h2 {
+      font-size: 0.8rem;
+      color: #FFD700;
+      margin-bottom: -8px;
+    }
+
+    .texto-dourado {
+  background: linear-gradient(45deg, #b8860b, #ffd700, #daa520);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade WebKit */
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback sólido */
+  text-shadow: 0 0 1px rgba(0,0,0,0.4); /* contorno leve para nitidez */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.foto-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1px auto;
-  width: 253px;
-  height: auto;
-  padding: 0px;
-  border: 17px solid transparent;
-  border-image: url(moldura-principal.png) 60 round;
-  box-sizing: border-box;
-}
 
-.foto-casal {
-  max-width: 112%;
-  padding-left: 7px;
-  height: 12rem;
-  display: block;
-}
 
 .linha-decorativa {
   width: 27%;
@@ -109,19 +124,19 @@ h2 {
   background: linear-gradient(90deg, transparent, #FFD700, transparent);
 }
 
-.info a {
-  border: 2px solid #FFD700;
-  padding: 4px 3px;
-  border-radius: 10px;
-  color: #FFD700;
-  font-weight: bold;
-  transition: 0.3s;
-  text-decoration: none;
+    .info a {
+    border: 2px solid #FFD700;
+    padding: 4px 3px;
+    border-radius: 10px;
+    color: #FFD700;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
 }
-.info a:hover {
-  background: #ffd900ab;
-  color: #000;
-}
+    .info a:hover {
+      background: #ffd900ab;
+      color: #000;
+    }
 
 a.confirm {
   display: inline-block;
@@ -137,32 +152,52 @@ a.confirm {
 a.confirm:hover {
   opacity: 0.9;
 }
+    .data {
+        margin: 18px 0;
+    }
 
-.data {
-  margin: 18px 0;
+.info .data span:not(.icon),
+.info .local a {
+  font-size: 1.5rem;
+  text-transform: lowercase; /* só afeta letras */
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade com WebKit */
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback */
+  text-shadow: 0 0 5px rgba(255,215,0,0.6),
+               0 0 10px rgba(255,215,0,0.4),
+               0 0 20px rgba(255,215,0,0.2);
 }
 
+
 .texto-data {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Arial', sans-serif; /* evita uppercase da Cinzel */
   color: #fff;
+  /* background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255,215,0,0.6),
+               0 0 10px rgba(255,215,0,0.4),
+               0 0 20px rgba(255,215,0,0.2); */
 }
 
 .linha-unica {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-flex;     /* coloca ícone e texto na mesma linha */
+  align-items: center;      /* alinha verticalmente */
+  gap: 8px;                 /* espaço entre ícone e texto */
 }
 
 .texto-local {
   font-family: 'Arial', sans-serif;
-  color: #fff;
+  color: #fff; /* branco fixo */
   font-size: 0.9rem;
   font-weight: bold;
 }
 
 .texto-traje {
   font-family: 'Arial', sans-serif;
-  color: #FFD700;
+  color: #FFD700; /* dourado */
   font-size: 0.9rem;
   font-weight: bold;
   animation: pulseGlow 2s infinite ease-in-out;
@@ -189,6 +224,24 @@ a.confirm:hover {
   }
 }
 
+
+
+.icon {
+  padding-top: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.traje svg {
+    width: 24px;
+    height: 32px;
+}
+
+svg {
+  height: 1em;
+  width: 1em;
+}
+
 .presenca {
   text-align: center;
   margin-top: 20px;
@@ -198,150 +251,200 @@ a.confirm:hover {
 .presenca-titulo {
   font-family: 'Great Vibes', cursive;
   font-size: 1.6rem;
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(255,215,0,0.6),
+               0 0 15px rgba(255,215,0,0.4);
+  margin-bottom: -22px;
 }
 
-.presenca-texto {
-  font-family: 'Arial', sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-}
+    .presenca-texto {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
+      background-clip: text;           /* padrão */
+      -webkit-background-clip: text;   /* compatibilidade */
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 5px rgba(255,215,0,0.6),
+                  0 0 10px rgba(255,215,0,0.4);
+    }
 
+    @media (max-width: 480px) {
+      h1 { font-size: 2.6rem; }
+      h2 { font-size: 0.8rem; }
+      .info { font-size: 1.4rem; }
+      .linha-decorativa {
+        width: 90%;
+        height: 2px;
+        margin: 10px auto;
+        background: linear-gradient(90deg, transparent, #FFD700, transparent);
+      }
+
+    @media (max-width: 600px) {
+      h1, h2, .texto-dourado {
+        background: none;
+        color: #FFD700;
+        text-shadow: 0 0 5px rgba(255,215,0,0.6);
+      }
+    }
+
+   @media (max-width: 600px) {
+  h1, h2, .texto-dourado {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    color: #FFD700 !important;
+    text-shadow: 0 0 5px rgba(255,215,0,0.6);
+  }
+}
+}
 </style>
 </head>
 <body>
- <body>
   <!-- Canvas para fundo animado -->
   <canvas id="bg-canvas"></canvas>
 
   <div class="container">
-    <h2 class="texto-dourado">Bodas de Ouro</h2>
-
+       <h2 class="bodas">
+  Bodas de Ouro
+  
+</h2>
     <div class="foto-container">
       <img src="foto-casal3.png" alt="Foto do casal" class="foto-casal">
     </div>
-
     <h1 class="texto-dourado">Geraldo & Isabel</h1>
     <div class="linha-decorativa"></div>
-
+<!-- texto adicionado -->
     <h2 class="texto-dourado">Celebrando 50 anos de união</h2>
     <div class="linha-decorativa"></div>
 
-    <div class="info">
-      <div class="data linha-unica">
-        <span class="icon">
-          <!-- SVG dourado do calendário -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="url(#goldGradient)" viewBox="0 0 24 24">
-            <defs>
-              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#b8860b"/>
-                <stop offset="50%" stop-color="#ffd700"/>
-                <stop offset="100%" stop-color="#daa520"/>
-              </linearGradient>
-            </defs>
-            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 
-            2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 
-            2-2V6c0-1.1-.9-2-2-2zm0 
-            16H5V9h14v11z"/>
-          </svg>
-        </span>
-        <span class="texto-dourado">4 de Julho às 18:00h</span>
-      </div>
 
-      <a class="local linha-unica" href="https://www.google.com/maps/search/?api=1&query=Clube+Aquatico+do+Bosque+Rua+Traituba+287+Vila+da+Saude" target="_blank">
-        <span class="icon">
-          <!-- SVG dourado de localização -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="url(#goldGradient)" viewBox="0 0 24 24">
-            <path d="M12 2C8.13 2 5 5.13 5 
-            9c0 5.25 7 13 7 13s7-7.75 
-            7-13c0-3.87-3.13-7-7-7zm0 
-            9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 
-            6.5 12 6.5s2.5 1.12 2.5 
-            2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-        </span>
-        <span class="texto-dourado">Local: Clube Aquático do Bosque</span>
-      </a>
-    </div>
+<div class="info">
+  <div class="data">
+    <span class="icon">
+      <!-- SVG dourado do calendário -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="url(#goldGradient)" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#b8860b"/>
+            <stop offset="50%" stop-color="#ffd700"/>
+            <stop offset="100%" stop-color="#daa520"/>
+          </linearGradient>
+        </defs>
+        <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 
+        2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 
+        2-2V6c0-1.1-.9-2-2-2zm0 
+        16H5V9h14v11z"/>
+      </svg>
+    </span>
+     <span class="texto-data">4 de Julho às 18:00h</span>
   </div>
+  <div class="info">
+  <div class="info">
+  <a class="local linha-unica" href="https://www.google.com/maps/search/?api=1&query=Clube+Aquatico+do+Bosque+Rua+Traituba+287+Vila+da+Saude" target="_blank">
+    <span class="icon">
+      <!-- SVG dourado de localização -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="url(#goldGradient)" viewBox="0 0 24 24">
+        <path d="M12 2C8.13 2 5 5.13 5 
+        9c0 5.25 7 13 7 13s7-7.75 
+        7-13c0-3.87-3.13-7-7-7zm0 
+        9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 
+        6.5 12 6.5s2.5 1.12 2.5 
+        2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </span>
+    <span class="texto-dourado">Local: Clube Aquático do Bosque</span>
+  </a>
+</div>
+
+</div>
+
+</div>
+
 
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeaRW0rVqyreT0GHmsKB6kTAb_Ww4WUMermcnv_93ouvECbQ/viewform" target="_blank" class="confirm">
-    CONFIRMAR PRESENÇA
+      CONFIRMAR PRESENÇA
   </a>
 
   <div class="traje">
-    <span class="icon">
-      <!-- SVG dourado de smoking e vestido -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64">
-        <path d="M20 2 L28 12 L24 22 L32 62 L40 22 L36 12 L44 2 Z"
-              fill="none" stroke="#FFD700" stroke-width="2"/>
-        <path d="M48 10 C52 20, 56 20, 60 10 L54 30 L62 62 L46 62 L54 30 Z"
-              fill="none" stroke="#FFD700" stroke-width="2"/>
-      </svg>
-    </span>
-    <span class="texto-traje">Traje: Esporte Fino</span>
+  <span class="icon">
+    <!-- SVG dourado de smoking e vestido -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64">
+      <!-- Smoking -->
+      <path d="M20 2 L28 12 L24 22 L32 62 L40 22 L36 12 L44 2 Z"
+            fill="none" stroke="#FFD700" stroke-width="2"/>
+      <!-- Vestido -->
+      <path d="M48 10 C52 20, 56 20, 60 10 L54 30 L62 62 L46 62 L54 30 Z"
+            fill="none" stroke="#FFD700" stroke-width="2"/>
+    </svg>
+  </span>
+  <span class="texto-traje">Traje: Esporte Fino</span>
+</div>
+<div class="info" style="margin-top:30px;">
+  <div class="presenca">
+    <p class="presenca-titulo">O nosso presente é a sua presença!</p>
+    <p class="presenca-texto">Traga 1Kg de alimento não perecível</p>
   </div>
+</div>
 
-  <div class="info" style="margin-top:30px;">
-    <div class="presenca">
-      <p class="texto-dourado">O nosso presente é a sua presença!</p>
-      <p class="texto-dourado">Traga 1Kg de alimento não perecível</p>
-    </div>
-  </div>
+<script>
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
 
-  <!-- Script de partículas douradas -->
-  <script>
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+      this.speedY = Math.random() * -0.5 - 0.2;
+      this.opacity = Math.random();
+      this.pulse = Math.random() * 0.05 + 0.02;
     }
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedY = Math.random() * -0.5 - 0.2;
-        this.opacity = Math.random();
-        this.pulse = Math.random() * 0.05 + 0.02;
+    draw() {
+      ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`; // dourado simples
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    update() {
+      this.y += this.speedY;
+      this.opacity += this.pulse;
+      if (this.opacity >= 1 || this.opacity <= 0.3) {
+        this.pulse *= -1;
       }
-      draw() {
-        ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      update() {
-        this.y += this.speedY;
-        this.opacity += this.pulse;
-        if (this.opacity >= 1 || this.opacity <= 0.3) {
-          this.pulse *= -1;
-        }
-        if (this.y < -10) this.y = canvas.height + 10;
-      }
+      if (this.y < -10) this.y = canvas.height + 10;
     }
+  }
 
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < 80; i++) particles.push(new Particle());
-    }
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < 80; i++) particles.push(new Particle()); // menos partículas
+  }
 
-    function loop() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(loop);
-    }
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
 
-    window.onload = () => {
-      resize();
-      initParticles();
-      loop();
-    };
-    window.onresize = resize;
-  </script>
+  window.onload = () => {
+    resize();
+    initParticles();
+    loop();
+  };
+  window.onresize = resize;
+</script>
+
+
+
 </body>
-
 </html>
