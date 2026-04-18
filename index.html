@@ -104,25 +104,6 @@ h2.bodas {
       margin-bottom: -8px;
     }
 
-    .texto-dourado {
-  background: linear-gradient(45deg, #b8860b, #ffd700, #daa520);
-  background-clip: text;           /* padrão */
-  -webkit-background-clip: text;   /* compatibilidade WebKit */
-  -webkit-text-fill-color: transparent;
-  color: #FFD700; /* fallback sólido */
-  text-shadow: 0 0 1px rgba(0,0,0,0.4); /* contorno leve para nitidez */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Fallback para mobile */
-@media (max-width: 600px) {
-  .texto-dourado {
-    background: none;
-    color: #FFD700;
-    text-shadow: 0 0 5px rgba(255,215,0,0.6);
-  }
-}
 .linha-decorativa {
   width: 27%;
   height: 2px;
@@ -266,37 +247,36 @@ svg {
   margin-bottom: -22px;
 }
 
-    .presenca-texto {
-      font-family: 'Arial', sans-serif;
-      font-size: 1rem;
-      font-weight: bold;
-      background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
-      background-clip: text;           /* padrão */
-      -webkit-background-clip: text;   /* compatibilidade */
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 5px rgba(255,215,0,0.6),
-                  0 0 10px rgba(255,215,0,0.4);
-    }
+.presenca-texto {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255,215,0,0.6),
+               0 0 10px rgba(255,215,0,0.4);
+}
 
     @media (max-width: 480px) {
       h1 { font-size: 2.6rem; }
       h2 { font-size: 0.8rem; }
       .info { font-size: 1.4rem; }
       .linha-decorativa {
-        width: 90%;
-        height: 2px;
-        margin: 10px auto;
-        background: linear-gradient(90deg, transparent, #FFD700, transparent);
-      }
-
-    @media (max-width: 600px) {
-      h1, h2, .texto-dourado {
-        background: none;
-        color: #FFD700;
-        text-shadow: 0 0 5px rgba(255,215,0,0.6);
-      }
-    }
+  width: 90%;
+  height: 2px;
+  margin: 10px auto;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
 }
+@media (max-width: 600px) {
+  h1, h2, .texto-dourado {
+    background: none;
+    color: #FFD700;
+    text-shadow: 0 0 5px rgba(255,215,0,0.6);
+  }
+}
+    }
   </style>
 </head>
 <body>
