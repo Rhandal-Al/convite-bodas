@@ -30,7 +30,7 @@
       background: rgba(0,0,0,0.6);
       padding: 0px;
       border: 17px solid transparent; /* largura da moldura */
-      border-image: url(moldura-principal.png) 60 round;
+      border-image: url(moldura-convite.png) 60 round;
       border-image-slice: 60; /* necessário para funcionar */
     }
 h2.bodas {
@@ -49,9 +49,16 @@ h2.bodas {
   text-align: center;
 }
     .foto-container {
-      border: 20px solid transparent;
-      border-image: url('nova-moldura.png') 80 round;
-      border-image-slice: 80;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1px auto;
+      width: 253px;
+      height: auto;
+      padding: 0px;
+      border: 17px solid transparent;
+      border-image: url(moldura-principal.png) 60 round;
+      box-sizing: border-box;
     }
 
     .foto-casal {
