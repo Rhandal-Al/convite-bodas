@@ -104,6 +104,19 @@ h2.bodas {
       margin-bottom: -8px;
     }
 
+    .texto-dourado {
+  background: linear-gradient(45deg, #b8860b, #ffd700, #daa520);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade WebKit */
+  -webkit-text-fill-color: transparent;
+  color: #FFD700; /* fallback sólido */
+  text-shadow: 0 0 1px rgba(0,0,0,0.4); /* contorno leve para nitidez */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
 .linha-decorativa {
   width: 27%;
   height: 2px;
@@ -277,6 +290,15 @@ svg {
         text-shadow: 0 0 5px rgba(255,215,0,0.6);
       }
     }
+
+    /* Fallback para mobile */
+    @media (max-width: 600px) {
+      .texto-dourado {
+        background: none;
+        color: #FFD700;
+        text-shadow: 0 0 5px rgba(255,215,0,0.6);
+      }
+    }
 }
   </style>
 </head>
@@ -292,10 +314,10 @@ svg {
     <div class="foto-container">
       <img src="foto-casal3.png" alt="Foto do casal" class="foto-casal">
     </div>
-    <h1>Geraldo & Isabel</h1>
+    <h1 class="texto-dourado">Geraldo & Isabel</h1>
     <div class="linha-decorativa"></div>
 <!-- texto adicionado -->
-    <h2>Celebrando 50 anos de união</h2>
+    <h2 class="texto-dourado">Celebrando 50 anos de união</h2>
     <div class="linha-decorativa"></div>
 
 
@@ -333,7 +355,7 @@ svg {
         2.5-1.12 2.5-2.5 2.5z"/>
       </svg>
     </span>
-    <span class="texto-local">Local: Clube Aquático do Bosque</span>
+    <span class="texto-dourado">Local: Clube Aquático do Bosque</span>
   </a>
 </div>
 
