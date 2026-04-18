@@ -169,10 +169,16 @@ a.confirm:hover {
 }
 
 .texto-local {
-  /*font-family: 'Arial', sans-serif; / evita uppercase da Cinzel */
-  color: #fff;
-  font-size: 0.8rem;
+  /* font-family: 'Arial', sans-serif; */
+  color: #FFD700; /* dourado */
+  font-size: 0.9rem;
   font-weight: bold;
+  animation: blink 1s infinite; /* animação contínua */
+}
+
+@keyframes blink {
+  0%, 100% { color: #FFD700; }
+  50% { color: #fff; }
 }
 
 .icon {
@@ -182,8 +188,8 @@ a.confirm:hover {
 }
 
 .traje svg {
-  width: 40px;
-  height: 40px;
+    width: 24px;
+    height: 32px;
 }
 
 svg {
