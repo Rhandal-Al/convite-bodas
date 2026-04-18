@@ -169,17 +169,26 @@ a.confirm:hover {
 }
 
 .texto-local {
-  /* font-family: 'Arial', sans-serif; */
+  font-family: 'Arial', sans-serif;
+  color: #fff; /* branco fixo */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.texto-traje {
+  font-family: 'Arial', sans-serif;
   color: #FFD700; /* dourado */
   font-size: 0.9rem;
   font-weight: bold;
-  animation: blink 1s infinite; /* animação contínua */
+  animation: blink 1s infinite; /* só o traje pisca */
 }
 
 @keyframes blink {
-  0%, 100% { color: #FFD700; }
-  50% { color: #fff; }
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
 }
+
 
 .icon {
   padding-top: 5px;
@@ -275,7 +284,7 @@ svg {
         2.5-1.12 2.5-2.5 2.5z"/>
       </svg>
     </span>
-    <span class="texto-local">Clube Aquático do Bosque</span>
+    <span class="texto-local">Local: Clube Aquático do Bosque</span>
   </a>
 </div>
 <div class="traje">
@@ -290,7 +299,7 @@ svg {
             fill="none" stroke="#FFD700" stroke-width="2"/>
     </svg>
   </span>
-  <span class="texto-local">Traje: Esporte Fino</span>
+  <span class="texto-traje">Traje: Esporte Fino</span>
 </div>
 
 
