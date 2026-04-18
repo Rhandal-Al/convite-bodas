@@ -232,7 +232,8 @@ svg {
   font-family: 'Great Vibes', cursive;
   font-size: 1.6rem;
   background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
-  -webkit-background-clip: text;
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade com WebKit */
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 8px rgba(255,215,0,0.6),
                0 0 15px rgba(255,215,0,0.4);
