@@ -37,21 +37,17 @@
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
       font-weight: bold;
-      background: linear-gradient(45deg, #b8860b, #ffd700, #daa520, #b8860b); /* removido #fff8dc */
+      background: linear-gradient(45deg, #b8860b, #ffd700, #daa520, #b8860b); /* gradiente simplificado */
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       color: #FFD700; /* fallback */
-      text-shadow: 
-        0 0 5px rgba(255,215,0,0.6),
-        0 0 10px rgba(255,215,0,0.4),
-        0 0 20px rgba(255,215,0,0.2);
-      margin: 0px 0;
+      text-shadow: 0 0 2px rgba(0,0,0,0.3), 0 0 5px rgba(255,215,0,0.6);
+      margin: 0;
       text-align: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    
     .foto-container {
       display: flex;
       justify-content: center;
@@ -279,15 +275,18 @@ svg {
     text-shadow: 0 0 5px rgba(255,215,0,0.6);
     margin-bottom: -13px
   }
-  h2 .container .bodas {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: initial !important;
-    color: #FFD700 !important;
-    text-shadow: 0 0 5px rgba(255,215,0,0.6);
-    margin-bottom: -13px
+  h2.bodas,
+  h1.nomes,
+    .texto-data,
+    .presenca-titulo,
+    .presenca-texto {
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+      color: #FFD700 !important;
+      text-shadow: 0 0 5px rgba(255,215,0,0.6);
+    }
   }
-}
 }
 
   </style>
