@@ -232,8 +232,7 @@ svg {
   line-height: 1.6;
 }
 
-.presenca-titulo,
-.presenca-texto {
+.presenca-titulo {
   font-family: 'Great Vibes', cursive;
   font-size: 1.6rem;
   background: linear-gradient(45deg, #b8860b, #ffd700, #daa520, #b8860b);
@@ -242,6 +241,18 @@ svg {
   -webkit-text-fill-color: transparent;
   color: #FFD700; /* fallback */
   text-shadow: 0 0 5px rgba(255,215,0,0.6);
+}
+
+.presenca-texto {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
+  background-clip: text;           /* padrão */
+  -webkit-background-clip: text;   /* compatibilidade */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255,215,0,0.6),
+               0 0 10px rgba(255,215,0,0.4);
 }
 
 
@@ -286,7 +297,7 @@ svg {
     <div class="foto-container">
       <img src="foto-casal3.png" alt="Foto do casal" class="foto-casal">
     </div>
-    <h1>Geraldo & Isabel</h1>
+    <h1 class="texto-dourado">Geraldo & Isabel</h1>
     <div class="linha-decorativa"></div>
 <!-- texto adicionado -->
     <h2>Celebrando 50 anos de união</h2>
@@ -311,7 +322,7 @@ svg {
         16H5V9h14v11z"/>
       </svg>
     </span>
-     <span class="texto-data">4 de Julho às 18:00h</span>
+     <span class="texto-dourado">4 de Julho às 18:00h</span>
   </div>
   <div class="info">
   <div class="info">
