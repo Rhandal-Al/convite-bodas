@@ -156,14 +156,14 @@ a.confirm:hover {
 
 
 .texto-data {
-  font-family: 'Arial', sans-serif; /* evita uppercase da Cinzel */
-  color: #fff;
-  /* background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5rem;
+  background: linear-gradient(45deg, #b8860b, #ffd700, #daa520, #b8860b);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 5px rgba(255,215,0,0.6),
-               0 0 10px rgba(255,215,0,0.4),
-               0 0 20px rgba(255,215,0,0.2); */
+  color: #FFD700; /* fallback */
+  text-shadow: 0 0 5px rgba(255,215,0,0.6);
 }
 
 .linha-unica {
@@ -232,29 +232,18 @@ svg {
   line-height: 1.6;
 }
 
-.presenca-titulo {
+.presenca-titulo,
+.presenca-texto {
   font-family: 'Great Vibes', cursive;
   font-size: 1.6rem;
-  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
-  background-clip: text;           /* padrão */
-  -webkit-background-clip: text;   /* compatibilidade */
+  background: linear-gradient(45deg, #b8860b, #ffd700, #daa520, #b8860b);
+  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 8px rgba(255,215,0,0.6),
-               0 0 15px rgba(255,215,0,0.4);
-  margin-bottom: -22px;
+  color: #FFD700; /* fallback */
+  text-shadow: 0 0 5px rgba(255,215,0,0.6);
 }
 
-.presenca-texto {
-  font-family: 'Arial', sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520);
-  background-clip: text;           /* padrão */
-  -webkit-background-clip: text;   /* compatibilidade */
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 5px rgba(255,215,0,0.6),
-               0 0 10px rgba(255,215,0,0.4);
-}
 
     @media (max-width: 480px) {
       h1 { font-size: 2.6rem; }
@@ -268,13 +257,17 @@ svg {
 }
 
 @media (max-width: 600px) {
-  h2.bodas {
+  h1.texto-dourado,
+  .texto-data,
+  .presenca-titulo,
+  .presenca-texto {
     background: none !important;
     -webkit-background-clip: initial !important;
     -webkit-text-fill-color: initial !important;
     color: #FFD700 !important;
     text-shadow: 0 0 5px rgba(255,215,0,0.6);
   }
+}
 }
 
 
