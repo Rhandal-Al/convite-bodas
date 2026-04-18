@@ -33,21 +33,25 @@
       border-image: url(moldura-convite.png) 60 round;
       border-image-slice: 60; /* necessário para funcionar */
     }
-h2.bodas {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
-  font-weight: bold;
-  background: linear-gradient(45deg, #b8860b, #ffd700, #fff8dc, #daa520, #b8860b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #FFD700;
-  text-shadow: 
-    0 0 5px rgba(255,215,0,0.6),
-    0 0 10px rgba(255,215,0,0.4),
-    0 0 20px rgba(255,215,0,0.2);
-  margin: 0px 0;
-  text-align: center;
-}
+    h2.bodas {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #b8860b, #ffd700, #daa520, #b8860b); /* removido #fff8dc */
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #FFD700; /* fallback */
+      text-shadow: 
+        0 0 5px rgba(255,215,0,0.6),
+        0 0 10px rgba(255,215,0,0.4),
+        0 0 20px rgba(255,215,0,0.2);
+      margin: 0px 0;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
     .foto-container {
       display: flex;
       justify-content: center;
